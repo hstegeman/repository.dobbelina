@@ -63,8 +63,20 @@ class URL_Dispatcher(object):
     def add_dir(self, name, url, mode, iconimage=None, page=None, channel=None, section=None, keyword='', Folder=True,
                 about=None, custom=False, list_avail=True, listitem_id=None, custom_list=False, contextm=None):
         mode = self.get_full_mode(mode)
-        addDir(name, url, mode, iconimage, page, channel, section, keyword, Folder, about,
-               custom, list_avail, listitem_id, custom_list, contextm)
+        addDir(name=name, url=url, mode=mode, iconimage=iconimage, page=page, channel=channel, section=section, keyword=keyword, Folder=Folder, about=about,
+               custom=custom, list_avail=list_avail, listitem_id=listitem_id, custom_list=custom_list, contextm=contextm)
+
+    def add_dir2(self, name, url, mode, iconimage=None, page=None, channel=None, section=None,
+                 onelist=None, desc='', username=None, sort=None, longer=None, loop=None, quality=None,
+                 category=None, filtered=None, hash=None, writefile=None, reverse=None,
+                 keyword='', Folder=True,
+                 about=None, custom=False, list_avail=True, listitem_id=None, custom_list=False, contextm=None):
+        mode = self.get_full_mode(mode)
+        addDir(name=name, url=url, mode=mode, iconimage=iconimage, page=page, channel=channel, section=section,
+               onelist=onelist, desc=desc, username=username, sort=sort, longer=longer, loop=loop, quality=quality,
+               category=category, filtered=filtered, hash=hash, writefile=writefile, reverse=reverse,
+               keyword=keyword, Folder=Folder, about=about,
+               custom=custom, list_avail=list_avail, listitem_id=listitem_id, custom_list=custom_list, contextm=contextm)
 
     def add_download_link(self, name, url, mode, iconimage, desc='', stream=None, fav='add', noDownload=False, contextm=None, fanart=None, duration='', quality=''):
         mode = self.get_full_mode(mode)

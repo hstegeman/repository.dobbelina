@@ -224,7 +224,10 @@ def resolution(quality):
     return resolution
 
 
-def addDir(name, url, mode, iconimage=None, page=None, channel=None, section=None, keyword='', Folder=True, about=None,
+def addDir(name, url, mode, iconimage=None, page=None, channel=None, section=None,
+           onelist=None, desc='', username=None, sort=None, longer=None, loop=None, quality=None,
+           category=None, filtered=None, hash=None, writefile=None, reverse=None,
+           keyword='', Folder=True, about=None,
            custom=False, list_avail=True, listitem_id=None, custom_list=False, contextm=None):
     u = (sys.argv[0]
          + "?url=" + urllib_parse.quote_plus(url)
@@ -232,6 +235,17 @@ def addDir(name, url, mode, iconimage=None, page=None, channel=None, section=Non
          + "&page=" + str(page)
          + "&channel=" + str(channel)
          + "&section=" + str(section)
+         + "&onelist=" + str(onelist)
+         + "&username=" + str(username)
+         + "&sort=" + str(sort)
+         + "&longer=" + str(longer)
+         + "&loop=" + str(loop)
+         + "&quality=" + str(quality)
+         + "&category=" + str(category)
+         + "&filtered=" + str(filtered)
+         + "&hash=" + str(hash)
+         + "&writefile=" + str(writefile)
+         + "&reverse=" + str(reverse)
          + "&keyword=" + urllib_parse.quote_plus(keyword)
          + "&name=" + urllib_parse.quote_plus(name))
     ok = True
@@ -244,7 +258,10 @@ def addDir(name, url, mode, iconimage=None, page=None, channel=None, section=Non
         fanart = iconimage
         art.update({'poster': iconimage})
     liz.setArt(art)
-    liz.setInfo(type="Video", infoLabels={"Title": name})
+    if desc:
+        liz.setInfo(type="Video", infoLabels={"Title": name, "plot": desc, "plotoutline": desc})
+    else:
+        liz.setInfo(type="Video", infoLabels={"Title": name})
 
     contextMenuItems = []
     if contextm:
